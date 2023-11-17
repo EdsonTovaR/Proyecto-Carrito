@@ -1,3 +1,4 @@
+
 void setup() {
   //Entradas de los servomotores de las ruedas
   pinMode(2, OUTPUT);
@@ -7,6 +8,7 @@ void setup() {
 
   //Entradas del sensor de ultrasonido
   Serial.begin(9600);
+ 
   pinMode(12, OUTPUT);
   pinMode(13, INPUT);
 
@@ -16,11 +18,11 @@ void setup() {
 
 void loop() 
 {
-  char option = Serial.read();
+  
   if (Serial.available()>0)
   {
-    char option = Serial.read();
-    if (option ==1)
+    char data = Serial.read();
+    if (data =="1")
     {
       Avanzar(70);
       delay(5000);
@@ -102,4 +104,4 @@ void Ultrasonic_Sensor_Module() {
   Serial.print(Distance);
   Serial.println("CM");
   delay(100);
-}s
+}

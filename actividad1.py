@@ -1,6 +1,6 @@
 import speech_recognition as sr
 
-import serial
+import serial, time
 #from time import sleep
 
 def reconocer_voz_y_guardar():
@@ -37,23 +37,27 @@ def reconocer(texto):
     num=""
     if texto == "avanza":
         num="1"
-        ser.write(('1').encode())
+        arduino.write(num.encode())
+        #
+        datos_recibidos = arduino.readline().decode()
+        print("Datos recibidos:", datos_recibidos)
+        #
         return escribir(num)
     elif texto == "detente":
         num="2"
-        ser.write('2')
+        arduino.write(num.encode())
         return escribir(num)
     elif texto == "atras":
         num="3"
-        ser.write('3')
+        arduino.write(num.encode())
         return escribir(num)
     elif texto == "derecha":
         num="4"
-        ser.write('4')
+        arduino.write(num.encode())
         return escribir(num)
     elif texto == "izquierda":
         num="5"
-        ser.write('5')
+        arduino.write(num.encode())
         return escribir(num)
     else:
         return print("Error Catastrofico")
@@ -74,7 +78,7 @@ def escribir(entrada):
 
 if __name__ == "__main__":
     try:
-        ser = serial.Serial("COM5",9600)
+        arduino = serial.Serial("COM5",9600)
         print("Conectado")
         while True:
             reconocer_voz_y_guardar()

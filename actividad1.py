@@ -1,5 +1,7 @@
 import speech_recognition as sr
+
 import serial
+#from time import sleep
 
 def reconocer_voz_y_guardar():
     # Crear un objeto de reconocimiento de voz
@@ -35,7 +37,7 @@ def reconocer(texto):
     num=""
     if texto == "avanza":
         num="1"
-        ser.write('1')
+        ser.write(('1').encode())
         return escribir(num)
     elif texto == "detente":
         num="2"
@@ -64,12 +66,15 @@ def escribir(entrada):
     with open("transcripcion.txt", "a") as archivo:
             archivo.write(entrada + "\n")
     print("Transcripción guardada en 'transcripcion.txt'")
+    
+#Funcion que envia el dato al serial por bluetooth
+
         
         
 
 if __name__ == "__main__":
     try:
-        ser = serial.Serial("COM4",9600)
+        ser = serial.Serial("COM5",9600)
         print("Conectado")
         while True:
             reconocer_voz_y_guardar()

@@ -70,8 +70,6 @@ def escribir(entrada):
     with open("transcripcion.txt", "a") as archivo:
             archivo.write(entrada + "\n")
     print("Transcripción guardada en 'transcripcion.txt'")
-    
-#Funcion que envia el dato al serial por bluetooth
 
         
         

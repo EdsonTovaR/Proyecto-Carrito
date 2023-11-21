@@ -1,4 +1,4 @@
- 
+char data;
 void setup() {
   //Entradas de los servomotores de las ruedas
   pinMode(2, OUTPUT);
@@ -21,29 +21,31 @@ void loop()
   
   if (Serial.available()>0)
   {
-    char data = Serial.read();
-    if (data =="1")
+    data = Serial.read();
+    Serial.println(data);
+    if (data == '1')
     {
       Avanzar(70);
       delay(5000);
-    } else if(data == "2"){
+      
+    } else if(data == '2'){
       Atras(70);
       delay(5000);
-    } else if(data == "3"){
+    } else if(data == '3'){
       Izquierda(70);
       delay(5000);
-    } else if(data == "4"){
+    } else if(data == '4'){
       Derecha(70);
       delay(5000);
-    } else if(data == "5"){
+    } else if(data == '5'){
       Alto();
       delay(5000);
     }
   }
 
-  Ultrasonic_Sensor_Module();
+  //Ultrasonic_Sensor_Module();
 
-  Avanzar(70);//avanza por 2 segundos
+  /*Avanzar(70);//avanza por 2 segundos
   delay(2000);
   Atras(70);
   delay(2000);
@@ -52,7 +54,7 @@ void loop()
   Derecha(80);
   delay(2000);
   Alto();
-  delay(2000);
+  delay(2000);*/
 
 }
 
@@ -115,5 +117,5 @@ void Ultrasonic_Sensor_Module() {
   Serial.print("Distance:");
   Serial.print(Distance);
   Serial.println("CM");
-  delay(100);
+  delay(100);
 }

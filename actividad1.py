@@ -35,29 +35,30 @@ def reconocer_voz_y_guardar():
         
 def reconocer(texto):
     num=""
-    if texto == "avanza":
-        num="1"
-        arduino.write(num.encode())
+    if texto == "avanzan":
+        #num='1'
+        #r=str(num)
+        arduino.write(b'1')
         #
         datos_recibidos = arduino.readline().decode()
         print("Datos recibidos:", datos_recibidos)
         #
         return escribir(num)
     elif texto == "detente":
-        num="2"
-        arduino.write(num.encode())
+        #num="5"
+        arduino.write(b'5')
         return escribir(num)
     elif texto == "atras":
-        num="3"
-        arduino.write(num.encode())
+        #num="2"
+        arduino.write(b'2')
         return escribir(num)
     elif texto == "derecha":
-        num="4"
-        arduino.write(num.encode())
+        #num="4"
+        arduino.write(b'4')
         return escribir(num)
     elif texto == "izquierda":
-        num="5"
-        arduino.write(num.encode())
+        #num="3"
+        arduino.write(b'3')
         return escribir(num)
     else:
         return print("Error Catastrofico")
